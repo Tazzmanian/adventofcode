@@ -2,8 +2,7 @@ package com.tazz.adventofcode.y2015.day2;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import reactor.test.StepVerifier;
 
 class BoxWrapperTest {
 
@@ -16,8 +15,9 @@ class BoxWrapperTest {
     })
     public void totalWrapper_shouldGetCorrectArea(String classpathFile, int expected) {
         var wrapper = new BoxWrapper();
-        var actual = wrapper.totalWrapper(classpathFile).block();
-        assertEquals(expected, actual);
+        StepVerifier.create(wrapper.totalWrapper(classpathFile))
+                .expectNext(expected)
+                .verifyComplete();
     }
 
     @ParameterizedTest(name = "{index} => file={0}, expected={1}")
@@ -29,7 +29,8 @@ class BoxWrapperTest {
     })
     public void totalRibbon_shouldGetCorrectLength(String classpathFile, int expected) {
         var wrapper = new BoxWrapper();
-        var actual = wrapper.totalRibbon(classpathFile).block();
-        assertEquals(expected, actual);
+        StepVerifier.create(wrapper.totalRibbon(classpathFile))
+                .expectNext(expected)
+                .verifyComplete();
     }
 }

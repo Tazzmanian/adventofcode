@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import reactor.test.StepVerifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,11 +27,10 @@ class FloorCounterTaskTest {
 
     })
     public void getFlour_shouldGetCorrectFloor(String classpathFile, int expected) {
-        var actual = new FloorCounterTask()
-                .getFloor(classpathFile)
-                .doOnNext(result -> log.info("Floor = {}", result))
-                .block();
-        assertEquals(expected, actual);
+        var task = new FloorCounterTask();
+        StepVerifier.create(task.getFloor(classpathFile))
+                .expectNext(expected)
+                .verifyComplete();
     }
 
     @ParameterizedTest(name = "{index} => file={0}, expected={1}")
@@ -40,12 +40,11 @@ class FloorCounterTaskTest {
             "/2015/day1/input.txt, 1797",
 
     })
-    public void firstBasement_shouldGetFirstBasementEncounter(String classpathFile, int expected) {
-        var actual = new FloorCounterTask()
-                .firstBasement(classpathFile)
-                .doOnNext(result -> log.info("Index = {}", result))
-                .block();
-        assertEquals(expected, actual);
+    public void firstBasement_shouldGetFirstBasementEncounter(String classpathFile, long expected) {
+        var task = new FloorCounterTask();
+        StepVerifier.create(task.firstBasement(classpathFile))
+                .expectNext(expected)
+                .verifyComplete();
     }
 
 }
