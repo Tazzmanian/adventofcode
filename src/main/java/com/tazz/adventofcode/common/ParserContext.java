@@ -1,5 +1,6 @@
 package com.tazz.adventofcode.common;
 
+import com.tazz.adventofcode.common.readers.FileReadStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.core.io.ClassPathResource;
@@ -13,16 +14,17 @@ import java.nio.file.Path;
 @Setter
 public class ParserContext<T> {
     private Parser<T> parser;
-    private FileReader fileReader;
+    private FileReadStrategy readStrategy;
 
     public Flux<T> parseClasspathFile(String classpathLocation) {
         try {
             Path path = new ClassPathResource(classpathLocation)
                     .getFile()
                     .toPath();
-            return fileReader
-                    .readAsString(path)
-                    .flatMapMany(parser::parse);
+
+            return readStrategy
+                    .read(path)
+                    .transform(parser::parse);
         } catch (IOException e) {
             return Flux.error(e);
         }

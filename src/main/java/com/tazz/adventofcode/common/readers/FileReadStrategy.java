@@ -1,10 +1,10 @@
 package com.tazz.adventofcode.common.readers;
 
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 import java.nio.file.Path;
 
-public interface WholeFileReader {
+public interface FileReadStrategy {
 
-    Mono<String> readAsString(Path path);
+    Flux<String> read(Path path);
 }

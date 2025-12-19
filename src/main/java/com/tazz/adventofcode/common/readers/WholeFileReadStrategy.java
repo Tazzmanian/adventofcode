@@ -6,9 +6,9 @@ import reactor.core.publisher.Mono;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class WholeFileReaderImpl implements FileReadStrategy {
+public class WholeFileReadStrategy implements FileReadStrategy {
     @Override
-    public Flux<String> readAsString(Path path) {
+    public Flux<String> read(Path path) {
         return Mono.fromCallable(() -> Files.readString(path)).flux();
     }
 }

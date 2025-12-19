@@ -6,5 +6,5 @@ import java.nio.file.Path;
 
 public interface Parser<T> {
 
-    Flux<T> parse(String input);
+    Flux<T> parse(Flux<String> source);
 }

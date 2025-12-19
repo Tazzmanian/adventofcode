@@ -1,14 +1,11 @@
 package com.tazz.adventofcode.y2015.day1;
 
 import com.tazz.adventofcode.common.*;
+import com.tazz.adventofcode.common.readers.FileReadStrategy;
+import com.tazz.adventofcode.common.readers.WholeFileReadStrategy;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.ClassPathResource;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 @Slf4j
 public class FloorCounterTask {
@@ -16,7 +13,7 @@ public class FloorCounterTask {
     private final ParserContext<Character> parserContext;
 
     public FloorCounterTask() {
-        FileReader fileReader = new FileReaderImpl();
+        FileReadStrategy fileReader = new WholeFileReadStrategy();
         Parser<Character> floorParser = new FloorParser();
         this.parserContext = new ParserContext<>(floorParser, fileReader);
     }
