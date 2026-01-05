@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class LookAndSayTest {
-    @ParameterizedTest(name = "{index} => file={0}, expected={2}")
+    @ParameterizedTest(name = "{index} => file={0}, expected={1}")
     @CsvSource({
             "1, 11",
             "11, 21",
