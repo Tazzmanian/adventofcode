@@ -7,9 +7,6 @@ import com.tazz.adventofcode.common.readers.WholeFileReadStrategy;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class HouseLocations {
     private final ParserContext<Movement> parserContext;
     public final Position origin;

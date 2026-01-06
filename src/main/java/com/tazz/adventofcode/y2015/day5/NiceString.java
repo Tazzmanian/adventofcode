@@ -4,12 +4,7 @@ import com.tazz.adventofcode.common.Parser;
 import com.tazz.adventofcode.common.ParserContext;
 import com.tazz.adventofcode.common.readers.FileReadStrategy;
 import com.tazz.adventofcode.common.readers.LineFileReaderImpl;
-import com.tazz.adventofcode.common.readers.WholeFileReadStrategy;
-import com.tazz.adventofcode.y2015.day3.Movement;
-import com.tazz.adventofcode.y2015.day3.MovementParser;
-import com.tazz.adventofcode.y2015.day3.Position;
 import com.tazz.adventofcode.y2015.day5.validation.*;
-import lombok.Setter;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
