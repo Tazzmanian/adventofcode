@@ -7,17 +7,17 @@ public record ReindeerStats(String name, int speed, int runDuration, int restDur
 
     public int distanceAfter(int seconds) {
         int totalDistance = 0;
-        log.info("=========== {} ===============", name);
+//        log.info("=========== {} ===============", name);
         for (int i = 0; i < seconds; ) {
             var runTime = runDuration(i, seconds);
             totalDistance += runTime * speed;
             i += runTime;
-            log.info("Distance {} km after {} seconds", totalDistance, i);
+//            log.info("Distance {} km after {} seconds", totalDistance, i);
             if (runTime < runDuration) {
                 break;
             }
             i += restDuration;
-            log.info("Rest until {} seconds", i);
+//            log.info("Rest until {} seconds", i);
         }
 
         return totalDistance;
