@@ -9,7 +9,7 @@ import java.util.Map;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Recipe implements Score {
+public class Recipe implements Score, Calories {
     private final Map<Ingredient, Integer> list;
 
     public Long getScore() {
@@ -26,5 +26,11 @@ public class Recipe implements Score {
         }
 
         return ing.getScore();
+    }
+
+    public Long getCalories() {
+        return list.entrySet().stream()
+                .mapToLong(e -> (long) e.getKey().getCalories() * e.getValue())
+                .sum();
     }
 }
