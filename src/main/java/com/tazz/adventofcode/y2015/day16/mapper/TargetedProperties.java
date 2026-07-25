@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class TargetedProperties {
 
     @Bean("targetAunt")
-    private HashMap<String, Integer> targetAuntProperties() {
+    public HashMap<String, Integer> targetAuntProperties() {
         HashMap<String, Integer> targetAuntProperties = new HashMap<>();
         targetAuntProperties.put("children", 3);
         targetAuntProperties.put("cats", 7);
