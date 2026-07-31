@@ -11,3 +11,5 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      spring.json.trusted.packages: '*'
+      spring.json.value.default.type: com.tazz.adventofcode.y2015.day16.Aunt
